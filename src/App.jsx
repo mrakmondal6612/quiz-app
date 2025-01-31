@@ -37,11 +37,11 @@ function App() {
   };
 
   // Answering Question
-  const answerQuestion = (selectedOption) => {
+  const answerQuestion = (selectedOptionId) => {
     const currentQuestion = quizData.questions[currentQuestionIndex];
 
     // Check if the selected option is correct
-    if (currentQuestion.correct_answer === selectedOption.id) {
+    if (selectedOptionId) {
       setScore((prevScore) => prevScore + 1); // Increase score using the previous score value
     }
 

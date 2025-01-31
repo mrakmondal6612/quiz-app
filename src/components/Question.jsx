@@ -1,19 +1,23 @@
 import React from "react";
 
-export default function Question({ question, onAnswer }) {
+function Question({ question, onAnswer }) {
+  const { description, options } = question;
+  console.log(options);
   return (
-    <div>
-      <p>{question.description}</p>
-      {/* Render options if they exist */}
-      {console.log(question.options)}
-      {question.options &&
-        question.options.map((option) => (
-          <div key={option.id}>
-            <button onClick={() => onAnswer(option)}>
-              {option.description}
-            </button>
-          </div>
+    <div className="question">
+      <h3>{description}</h3>
+      <div className="options">
+        {options.map((option) => (
+          <button
+            key={option.id}
+            onClick={() => onAnswer(option.is_correct)} // Pass option id when clicked
+          >
+            {option.description}
+          </button>
         ))}
+      </div>
     </div>
   );
 }
+
+export default Question;
